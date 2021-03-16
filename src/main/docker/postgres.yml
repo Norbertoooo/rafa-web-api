@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+
+  postgres-rafa-web:
+    container_name: postgres-rafa-web
+    image: postgres:11.6
+    environment:
+      - POSTGRES_USER=rafa
+      - POSTGRES_PASSWORD=rafa
+      - POSTGRES_DB=rafa
+    ports:
+      - 5432:5432

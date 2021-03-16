@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: rafa-web-api
+  profiles:
+    active: test
+server:
+  port: 8081
