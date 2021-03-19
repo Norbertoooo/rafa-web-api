@@ -24,6 +24,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/responsaveis/**").permitAll()
                 .antMatchers("/pacientes/**").permitAll()
                 .antMatchers("/terapeutas/**").permitAll()
+                .antMatchers("/relatorios/**").permitAll()
                 .anyRequest().authenticated();
 
         http.csrf().disable();
