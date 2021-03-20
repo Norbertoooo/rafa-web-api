@@ -2,6 +2,7 @@ package com.rafa.web.api.service;
 
 import com.rafa.web.api.domain.Terapeuta;
 import com.rafa.web.api.repository.TerapeutaRepository;
+import com.rafa.web.api.web.exceptionHandler.NotFoundException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -27,8 +28,8 @@ public class TerapeutaService {
         return terapeutaRepository.findAll(pageable);
     }
 
-    public Terapeuta buscarTerapeutaPeloId(Long id) throws Exception {
-        return terapeutaRepository.findById(id).orElseThrow(() -> new Exception(TERAPEUTA_NAO_ENCONTRADO));
+    public Terapeuta buscarTerapeutaPeloId(Long id) throws NotFoundException {
+        return terapeutaRepository.findById(id).orElseThrow(() -> new NotFoundException(TERAPEUTA_NAO_ENCONTRADO));
     }
 
     public Terapeuta cadastrarTerapeuta(Terapeuta terapeuta) {

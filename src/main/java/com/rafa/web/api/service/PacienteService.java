@@ -2,10 +2,13 @@ package com.rafa.web.api.service;
 
 import com.rafa.web.api.domain.Paciente;
 import com.rafa.web.api.repository.PacienteRepository;
+import com.rafa.web.api.web.exceptionHandler.NotFoundException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import static com.rafa.web.api.shared.Constantes.Erro.PACIENTE_NAO_ENCONTRADO;
 
 @Service
 public class PacienteService {
@@ -30,5 +33,10 @@ public class PacienteService {
         Pageable pageable = PageRequest.of(page, size);
         return pacienteRepository.findAllByIdResponsavel(id, pageable);
     }
+
+    public Paciente buscarPacientePeloId(Long id) {
+        return pacienteRepository.findById(id).orElseThrow(() -> new NotFoundException(PACIENTE_NAO_ENCONTRADO));
+    }
+
 
 }
