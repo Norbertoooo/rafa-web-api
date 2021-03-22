@@ -6,6 +6,8 @@ spring:
     platform: org.hibernate.dialect.PostgreSQLDialect
     url: jdbc:postgresql://localhost:5432/rafa
   jpa:
+    hibernate:
+      ddl-auto: update
     open-in-view: false
     database: postgresql
   flyway:

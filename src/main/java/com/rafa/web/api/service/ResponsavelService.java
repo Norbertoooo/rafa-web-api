@@ -42,4 +42,8 @@ public class ResponsavelService {
         return responsavelRepository.findById(id).orElseThrow( () -> new NotFoundException(RESPONSAVEL_NAO_ENCONTRADO));
     }
 
+    public Responsavel buscarResponsavelPeloEmail(String email) {
+        return responsavelRepository.findByLoginEmail(email).orElseThrow( () -> new NotFoundException(RESPONSAVEL_NAO_ENCONTRADO));
+    }
+
 }

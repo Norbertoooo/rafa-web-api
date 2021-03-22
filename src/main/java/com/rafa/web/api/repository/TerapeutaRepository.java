@@ -13,4 +13,6 @@ public interface TerapeutaRepository extends JpaRepository<Terapeuta, Long> {
 
     Optional<Terapeuta> findByCrfa(Long crfa);
 
+    Optional<Terapeuta> findByLoginEmail(String email);
+
 }

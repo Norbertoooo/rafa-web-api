@@ -2,6 +2,7 @@ package com.rafa.web.api.service;
 
 import com.rafa.web.api.domain.Login;
 import com.rafa.web.api.repository.LoginRepository;
+import com.rafa.web.api.web.exceptionHandler.NotFoundException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -23,8 +24,8 @@ public class LoginService {
         return loginRepository.findAll(pageable);
     }
 
-    public Login buscarLoginPeloEmail(String email) throws Exception {
-        return loginRepository.findById(email).orElseThrow(() -> new Exception(LOGIN_NAO_ENCONTRADO));
+    public Login buscarLoginPeloEmail(String email) {
+        return loginRepository.findById(email).orElseThrow(() -> new NotFoundException(LOGIN_NAO_ENCONTRADO));
     }
 
 

@@ -11,4 +11,7 @@ public interface ResponsavelRepository extends JpaRepository<Responsavel, Long> 
 
     Optional<Responsavel> findByNomeCompleto(String nome);
 
+    Optional<Responsavel> findByLoginEmail(String email);
+
+
 }

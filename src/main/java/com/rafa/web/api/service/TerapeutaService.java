@@ -32,6 +32,10 @@ public class TerapeutaService {
         return terapeutaRepository.findById(id).orElseThrow(() -> new NotFoundException(TERAPEUTA_NAO_ENCONTRADO));
     }
 
+    public Terapeuta buscarTerapeutaPeloEmail(String email) throws NotFoundException {
+        return terapeutaRepository.findByLoginEmail(email).orElseThrow(() -> new NotFoundException(TERAPEUTA_NAO_ENCONTRADO));
+    }
+
     public Terapeuta cadastrarTerapeuta(Terapeuta terapeuta) {
         terapeuta.getLogin().setPerfil(TERAPEUTA);
         terapeuta.getLogin().setSenha(passwordEncoder.encode(terapeuta.getLogin().getSenha()));
