@@ -14,9 +14,11 @@ import static com.rafa.web.api.shared.Constantes.Erro.PACIENTE_NAO_ENCONTRADO;
 public class PacienteService {
 
     private final PacienteRepository pacienteRepository;
+    private final TerapeutaService terapeutaService;
 
-    public PacienteService(PacienteRepository pacienteRepository) {
+    public PacienteService(PacienteRepository pacienteRepository, TerapeutaService terapeutaService) {
         this.pacienteRepository = pacienteRepository;
+        this.terapeutaService = terapeutaService;
     }
 
     public Page<Paciente> listarPacientes(Integer page, Integer size) {
@@ -24,12 +26,14 @@ public class PacienteService {
         return pacienteRepository.findAll(pageable);
     }
 
-    public Page<Paciente> listarPacientesDeUmTerapeuta(Integer page, Integer size, Long id) {
+    public Page<Paciente> listarPacientesDeUmTerapeuta(Integer page, Integer size, String email) {
+        Long id = terapeutaService.buscarTerapeutaPeloEmail(email).getId();
         Pageable pageable = PageRequest.of(page, size);
         return pacienteRepository.findAllByIdTerapeuta(id, pageable);
     }
 
-    public Page<Paciente> listarPacientesDeUmResponsavel(Integer page, Integer size, Long id) {
+    public Page<Paciente> listarPacientesDeUmResponsavel(Integer page, Integer size, String email) {
+        Long id = terapeutaService.buscarTerapeutaPeloEmail(email).getId();
         Pageable pageable = PageRequest.of(page, size);
         return pacienteRepository.findAllByIdResponsavel(id, pageable);
     }

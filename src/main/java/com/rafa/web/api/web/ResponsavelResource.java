@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 
 @RestController
 @RequestMapping("/responsaveis")
-@CrossOrigin(origins = "*")
 public class ResponsavelResource {
 
     private final ResponsavelService responsavelService;

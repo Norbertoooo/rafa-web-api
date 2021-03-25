@@ -1,20 +1,27 @@
 package com.rafa.web.api.web;
 
+import com.rafa.web.api.config.jwt.JwtTokenUtil;
 import com.rafa.web.api.domain.Paciente;
 import com.rafa.web.api.service.PacienteService;
+import javassist.NotFoundException;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+
 @RestController
 @RequestMapping("/pacientes")
-@CrossOrigin(origins = "*")
+@Slf4j
 public class PacienteResource {
 
     private final PacienteService pacienteService;
+    private final JwtTokenUtil jwtTokenUtil;
 
-    public PacienteResource(PacienteService pacienteService) {
+    public PacienteResource(PacienteService pacienteService, JwtTokenUtil jwtTokenUtil) {
         this.pacienteService = pacienteService;
+        this.jwtTokenUtil = jwtTokenUtil;
     }
 
     @GetMapping
@@ -22,14 +29,17 @@ public class PacienteResource {
         return ResponseEntity.ok(pacienteService.listarPacientes(0, 10));
     }
 
-    @GetMapping("/terapeuta/{id}")
-    public ResponseEntity<Page<Paciente>> listarPacientesDeUmTerapeuta(@RequestParam Long terapeutaId) {
-        return ResponseEntity.ok(pacienteService.listarPacientesDeUmTerapeuta(10, 0, terapeutaId));
+    @GetMapping("/terapeuta")
+    public ResponseEntity<Page<Paciente>> listarPacientesDeUmTerapeuta(HttpServletRequest request) throws NotFoundException {
+        String email = jwtTokenUtil.obterEmailLogado(request);
+        log.debug("Request para listar pacientes do terapeuta: {}", email);
+        return ResponseEntity.ok(pacienteService.listarPacientesDeUmTerapeuta(0, 10, email));
     }
 
-    @GetMapping("/responsavel/{id}")
-    public ResponseEntity<Page<Paciente>> listarPacientesDeUmResponsavel(@RequestParam Long terapeutaId) {
-        return ResponseEntity.ok(pacienteService.listarPacientesDeUmResponsavel(10, 0, terapeutaId));
+    @GetMapping("/responsavel")
+    public ResponseEntity<Page<Paciente>> listarPacientesDeUmResponsavel(HttpServletRequest request) throws NotFoundException {
+        String email = jwtTokenUtil.obterEmailLogado(request);
+        return ResponseEntity.ok(pacienteService.listarPacientesDeUmResponsavel(0, 10, email));
     }
 
 }

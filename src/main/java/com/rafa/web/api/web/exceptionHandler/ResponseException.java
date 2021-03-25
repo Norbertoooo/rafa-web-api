@@ -5,8 +5,9 @@ import lombok.Data;
 
 import java.time.LocalDateTime;
 
-import static com.rafa.web.api.shared.Constantes.Variaveis.DATA_HORA_FORMATO_BR;
-import static com.rafa.web.api.shared.Constantes.Variaveis.ZONEID_MACEIO;
+import static com.rafa.web.api.shared.Constantes.DATA_HORA_FORMATO_BR;
+import static com.rafa.web.api.shared.Constantes.ZONEID_MACEIO;
+
 
 @Data
 public class ResponseException {

@@ -14,8 +14,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import static com.rafa.web.api.shared.Constantes.Variaveis.HEADER_STRING;
-import static com.rafa.web.api.shared.Constantes.Variaveis.TOKEN_PREFIX;
+import static com.rafa.web.api.shared.Constantes.HEADER_STRING;
+import static com.rafa.web.api.shared.Constantes.TOKEN_PREFIX;
+
 
 @Component
 public class JwtAuthenticationFilter extends OncePerRequestFilter {

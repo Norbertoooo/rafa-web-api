@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 
 @RestController
 @RequestMapping("/terapeutas")
-@CrossOrigin(origins = "*")
 public class TerapeutaResource {
 
     private final TerapeutaService terapeutaService;

@@ -2,7 +2,6 @@ package com.rafa.web.api.web;
 
 import com.rafa.web.api.service.RelatorioService;
 import net.sf.jasperreports.engine.JRException;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,7 +12,6 @@ import java.io.OutputStream;
 
 @RestController
 @RequestMapping("/relatorios")
-@CrossOrigin(origins = "*")
 public class RelatorioResource {
 
     private final RelatorioService relatorioService;

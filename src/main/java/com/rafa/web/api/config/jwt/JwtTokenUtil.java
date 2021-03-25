@@ -8,11 +8,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.Serializable;
 import java.util.Date;
 import java.util.function.Function;
 
-import static com.rafa.web.api.shared.Constantes.Variaveis.*;
+import static com.rafa.web.api.shared.Constantes.*;
+
 
 @Component
 public class JwtTokenUtil {
