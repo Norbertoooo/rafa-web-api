@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
 
+import java.util.List;
+
 import static com.rafa.web.api.shared.Constantes.Erro.PACIENTE_NAO_ENCONTRADO;
 
 @Service
@@ -23,21 +25,18 @@ public class PacienteService {
         this.terapeutaService = terapeutaService;
     }
 
-    public Page<Paciente> listarPacientes(Integer page, Integer size) {
-        Pageable pageable = PageRequest.of(page, size);
-        return pacienteRepository.findAll(pageable);
+    public List<Paciente> listarPacientes() {
+        return pacienteRepository.findAll();
     }
 
-    public Page<Paciente> listarPacientesDeUmTerapeuta(Integer page, Integer size, HttpServletRequest request) throws javassist.NotFoundException {
+    public List<Paciente> listarPacientesDeUmTerapeuta(HttpServletRequest request) throws javassist.NotFoundException {
         Long id = terapeutaService.buscarTerapeutaPeloEmail(request).getId();
-        Pageable pageable = PageRequest.of(page, size);
-        return pacienteRepository.findAllByIdTerapeuta(id, pageable);
+        return pacienteRepository.findAllByIdTerapeuta(id);
     }
 
-    public Page<Paciente> listarPacientesDeUmResponsavel(Integer page, Integer size, HttpServletRequest request) throws javassist.NotFoundException {
+    public List<Paciente> listarPacientesDeUmResponsavel(HttpServletRequest request) throws javassist.NotFoundException {
         Long id = terapeutaService.buscarTerapeutaPeloEmail(request).getId();
-        Pageable pageable = PageRequest.of(page, size);
-        return pacienteRepository.findAllByIdResponsavel(id, pageable);
+        return pacienteRepository.findAllByIdResponsavel(id);
     }
 
     public Paciente buscarPacientePeloId(Long id) {
