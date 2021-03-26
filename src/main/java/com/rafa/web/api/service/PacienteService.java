@@ -8,6 +8,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
+
 import static com.rafa.web.api.shared.Constantes.Erro.PACIENTE_NAO_ENCONTRADO;
 
 @Service
@@ -26,14 +28,14 @@ public class PacienteService {
         return pacienteRepository.findAll(pageable);
     }
 
-    public Page<Paciente> listarPacientesDeUmTerapeuta(Integer page, Integer size, String email) {
-        Long id = terapeutaService.buscarTerapeutaPeloEmail(email).getId();
+    public Page<Paciente> listarPacientesDeUmTerapeuta(Integer page, Integer size, HttpServletRequest request) throws javassist.NotFoundException {
+        Long id = terapeutaService.buscarTerapeutaPeloEmail(request).getId();
         Pageable pageable = PageRequest.of(page, size);
         return pacienteRepository.findAllByIdTerapeuta(id, pageable);
     }
 
-    public Page<Paciente> listarPacientesDeUmResponsavel(Integer page, Integer size, String email) {
-        Long id = terapeutaService.buscarTerapeutaPeloEmail(email).getId();
+    public Page<Paciente> listarPacientesDeUmResponsavel(Integer page, Integer size, HttpServletRequest request) throws javassist.NotFoundException {
+        Long id = terapeutaService.buscarTerapeutaPeloEmail(request).getId();
         Pageable pageable = PageRequest.of(page, size);
         return pacienteRepository.findAllByIdResponsavel(id, pageable);
     }

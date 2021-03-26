@@ -16,11 +16,9 @@ import javax.servlet.http.HttpServletRequest;
 public class TerapeutaResource {
 
     private final TerapeutaService terapeutaService;
-    private final JwtTokenUtil jwtTokenUtil;
 
     public TerapeutaResource(TerapeutaService terapeutaService, JwtTokenUtil jwtTokenUtil) {
         this.terapeutaService = terapeutaService;
-        this.jwtTokenUtil = jwtTokenUtil;
     }
 
     @GetMapping("/{pagina}/{tamanho}")
@@ -30,8 +28,7 @@ public class TerapeutaResource {
 
     @GetMapping
     public ResponseEntity<Terapeuta> buscarTerapeutaPeloEmail(HttpServletRequest request) throws NotFoundException {
-        String email = jwtTokenUtil.obterEmailLogado(request);
-        return ResponseEntity.ok(terapeutaService.buscarTerapeutaPeloEmail(email));
+        return ResponseEntity.ok(terapeutaService.buscarTerapeutaPeloEmail(request));
     }
 
     @PostMapping

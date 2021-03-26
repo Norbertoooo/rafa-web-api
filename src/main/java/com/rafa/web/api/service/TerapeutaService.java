@@ -1,5 +1,6 @@
 package com.rafa.web.api.service;
 
+import com.rafa.web.api.config.jwt.JwtTokenUtil;
 import com.rafa.web.api.domain.Terapeuta;
 import com.rafa.web.api.repository.TerapeutaRepository;
 import com.rafa.web.api.web.exceptionHandler.NotFoundException;
@@ -9,6 +10,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
+
 import static com.rafa.web.api.domain.Perfil.TERAPEUTA;
 import static com.rafa.web.api.shared.Constantes.Erro.TERAPEUTA_NAO_ENCONTRADO;
 
@@ -17,10 +20,12 @@ public class TerapeutaService {
 
     private final TerapeutaRepository terapeutaRepository;
     private final BCryptPasswordEncoder passwordEncoder;
+    private final JwtTokenUtil jwtTokenUtil;
 
-    public TerapeutaService(TerapeutaRepository terapeutaRepository, BCryptPasswordEncoder passwordEncoder) {
+    public TerapeutaService(TerapeutaRepository terapeutaRepository, BCryptPasswordEncoder passwordEncoder, JwtTokenUtil jwtTokenUtil) {
         this.terapeutaRepository = terapeutaRepository;
         this.passwordEncoder = passwordEncoder;
+        this.jwtTokenUtil = jwtTokenUtil;
     }
 
     public Page<Terapeuta> listarTerapeutas(Integer pagina, Integer tamanho) {
@@ -32,7 +37,8 @@ public class TerapeutaService {
         return terapeutaRepository.findById(id).orElseThrow(() -> new NotFoundException(TERAPEUTA_NAO_ENCONTRADO));
     }
 
-    public Terapeuta buscarTerapeutaPeloEmail(String email) throws NotFoundException {
+    public Terapeuta buscarTerapeutaPeloEmail(HttpServletRequest request) throws NotFoundException, javassist.NotFoundException {
+        String email = jwtTokenUtil.obterEmailLogado(request);
         return terapeutaRepository.findByLoginEmail(email).orElseThrow(() -> new NotFoundException(TERAPEUTA_NAO_ENCONTRADO));
     }
 
