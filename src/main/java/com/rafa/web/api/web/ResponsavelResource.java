@@ -4,6 +4,7 @@ import com.rafa.web.api.config.jwt.JwtTokenUtil;
 import com.rafa.web.api.domain.Responsavel;
 import com.rafa.web.api.service.ResponsavelService;
 import javassist.NotFoundException;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +13,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 
 @RestController
-@RequestMapping("/responsaveis")
+@RequestMapping("/api/responsaveis")
+@Slf4j
 public class ResponsavelResource {
 
     private final ResponsavelService responsavelService;
@@ -35,7 +37,7 @@ public class ResponsavelResource {
     }
 
     @PostMapping()
-    public ResponseEntity<Responsavel> cadastrarResponsavel(@RequestBody Responsavel responsavel, @RequestParam Long id) throws Exception {
+    public ResponseEntity<Responsavel> cadastrarResponsavel(@RequestBody Responsavel responsavel, @RequestParam Long id) {
         return ResponseEntity.status(HttpStatus.CREATED).body(responsavelService.cadastrarResponsavel(responsavel, id));
     }
 }

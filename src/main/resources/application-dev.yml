@@ -15,7 +15,21 @@ spring:
   h2:
     console:
       enabled: false
-
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: rafa.tcc.umj@gmail.com
+    password: rafatcc2021
+    test-connection: true
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+          ssl:
+            enable: false
 logging:
   level:
     web: debug

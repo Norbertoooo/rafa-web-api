@@ -16,17 +16,21 @@ public class ResponsavelService {
 
     private final ResponsavelRepository responsavelRepository;
     private final TerapeutaService terapeutaService;
+    private final EmailService emailService;
 
-    public ResponsavelService(ResponsavelRepository responsavelRepository, TerapeutaService terapeutaService) {
+    public ResponsavelService(ResponsavelRepository responsavelRepository, TerapeutaService terapeutaService, EmailService emailService) {
         this.responsavelRepository = responsavelRepository;
         this.terapeutaService = terapeutaService;
+        this.emailService = emailService;
     }
 
     public Responsavel cadastrarResponsavel(Responsavel responsavel, Long idTerapeuta) {
         vereficarSeTerapeutaExiste(idTerapeuta);
         responsavel.getLogin().setPerfil(RESPONSAVEL);
         responsavel.getProtegidos().forEach(protegido -> protegido.setIdTerapeuta(idTerapeuta));
-        return responsavelRepository.save(responsavel);
+        Responsavel responsavelSalvo = responsavelRepository.save(responsavel);
+        emailService.enviarEmail(responsavel.getLogin());
+        return responsavelSalvo;
     }
 
     private void vereficarSeTerapeutaExiste(Long idTerapeuta) {

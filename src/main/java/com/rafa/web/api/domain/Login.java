@@ -3,6 +3,7 @@ package com.rafa.web.api.domain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -25,4 +26,8 @@ public class Login {
     @Enumerated(EnumType.STRING)
     private Perfil perfil;
 
+    public void setSenhaEncriptada(String senha) {
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        this.senha = passwordEncoder.encode(senha);
+    }
 }

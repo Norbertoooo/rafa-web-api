@@ -9,6 +9,13 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.rafa.web.api.shared.Constantes.DATA_FORMATO_BR;
+import static javax.persistence.CascadeType.*;
+import static javax.persistence.FetchType.EAGER;
+import static javax.persistence.FetchType.LAZY;
 
 @Entity
 @Data
@@ -26,14 +33,17 @@ public class Paciente {
     private String nomeCompleto;
 
     @NotNull
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATA_FORMATO_BR)
     @Column(name = "data_nascimento")
     private LocalDate dataNascimento;
 
     @Column(name = "id_terapeuta")
     private Long idTerapeuta;
 
-    @Column(name = "id_responsavel")
-    private Long idResponsavel;
+    @ManyToMany(cascade = ALL, fetch = EAGER)
+    @JoinTable(name = "pacientes_responsaveis", joinColumns =
+            {@JoinColumn(name = "paciente_id")}, inverseJoinColumns =
+            {@JoinColumn(name = "responsavel_id")})
+    private List<Responsavel> responsaveis = new ArrayList<>();
 
 }

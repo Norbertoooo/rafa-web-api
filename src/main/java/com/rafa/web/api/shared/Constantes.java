@@ -6,10 +6,13 @@ public final class Constantes {
 
     public static final ZoneId ZONEID_MACEIO = ZoneId.of("America/Maceio");
     public static final String DATA_HORA_FORMATO_BR = "dd/MM/yyyy hh:mm:ss";
+    public static final String DATA_FORMATO_BR = "dd/MM/yyyy";
     public static final Integer ACCESS_TOKEN_VALIDITY_SECONDS = 5 * 60 * 60;
     public static final String SIGNING_KEY = "rafaweb";
     public static final String TOKEN_PREFIX = "Bearer ";
     public static final String HEADER_STRING = "Authorization";
+    public static final String SENHA_PADRAO_RESPONSAVEL = "responsavel123";
+
 
     public static final class Erro {
         public static final String LOGIN_NAO_ENCONTRADO = "Login não encontrado para o email inserido!";

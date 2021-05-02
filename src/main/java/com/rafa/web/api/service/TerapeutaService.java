@@ -4,6 +4,8 @@ import com.rafa.web.api.config.jwt.JwtTokenUtil;
 import com.rafa.web.api.domain.Terapeuta;
 import com.rafa.web.api.repository.TerapeutaRepository;
 import com.rafa.web.api.web.exceptionHandler.NotFoundException;
+import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -16,17 +18,11 @@ import static com.rafa.web.api.domain.Perfil.TERAPEUTA;
 import static com.rafa.web.api.shared.Constantes.Erro.TERAPEUTA_NAO_ENCONTRADO;
 
 @Service
+@AllArgsConstructor(onConstructor = @__(@Autowired))
 public class TerapeutaService {
 
     private final TerapeutaRepository terapeutaRepository;
-    private final BCryptPasswordEncoder passwordEncoder;
     private final JwtTokenUtil jwtTokenUtil;
-
-    public TerapeutaService(TerapeutaRepository terapeutaRepository, BCryptPasswordEncoder passwordEncoder, JwtTokenUtil jwtTokenUtil) {
-        this.terapeutaRepository = terapeutaRepository;
-        this.passwordEncoder = passwordEncoder;
-        this.jwtTokenUtil = jwtTokenUtil;
-    }
 
     public Page<Terapeuta> listarTerapeutas(Integer pagina, Integer tamanho) {
         Pageable pageable = PageRequest.of(pagina, tamanho);
@@ -44,7 +40,20 @@ public class TerapeutaService {
 
     public Terapeuta cadastrarTerapeuta(Terapeuta terapeuta) {
         terapeuta.getLogin().setPerfil(TERAPEUTA);
-        terapeuta.getLogin().setSenha(passwordEncoder.encode(terapeuta.getLogin().getSenha()));
+        terapeuta.getLogin().setSenhaEncriptada(terapeuta.getLogin().getSenha());
+        return terapeutaRepository.save(terapeuta);
+    }
+
+    public Terapeuta atualizarTerapeuta(Terapeuta terapeuta) {
+        Terapeuta terapeutaSalvo = buscarTerapeutaPeloId(terapeuta.getId());
+        terapeutaSalvo.setCpf(terapeuta.getCpf());
+        terapeutaSalvo.setCrfa(terapeuta.getCrfa());
+        terapeutaSalvo.setDataNascimento(terapeuta.getDataNascimento());
+        terapeutaSalvo.setFormacao(terapeuta.getFormacao());
+        terapeutaSalvo.setEspecialidade(terapeuta.getEspecialidade());
+        terapeutaSalvo.setNomeCompleto(terapeuta.getNomeCompleto());
+        terapeutaSalvo.setTelefone(terapeuta.getTelefone());
+        terapeutaSalvo.setEndereco(terapeuta.getEndereco());
         return terapeutaRepository.save(terapeuta);
     }
 }

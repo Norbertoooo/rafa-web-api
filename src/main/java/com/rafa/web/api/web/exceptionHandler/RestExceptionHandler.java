@@ -31,7 +31,7 @@ public class RestExceptionHandler {
     public ResponseEntity<ResponseException> forbiddenException(AuthenticationException ex, WebRequest request) {
         return ResponseEntity
                 .status(FORBIDDEN)
-                .body(new ResponseException(ex.getMessage(), FORBIDDEN.value(), getUrl(request)));
+                .body(new ResponseException("Não autorizado", FORBIDDEN.value(), getUrl(request)));
     }
 
     public String getUrl(WebRequest webRequest) {

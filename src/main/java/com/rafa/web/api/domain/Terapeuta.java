@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.time.LocalDate;
 
+import static com.rafa.web.api.shared.Constantes.DATA_FORMATO_BR;
 import static javax.persistence.CascadeType.ALL;
 
 @Entity
@@ -27,7 +28,7 @@ public class Terapeuta {
     @Column(name = "nome_completo")
     private String nomeCompleto;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATA_FORMATO_BR)
     @Column(name = "data_nascimento")
     private LocalDate dataNascimento;
 
