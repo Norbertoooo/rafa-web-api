@@ -11,7 +11,7 @@ import java.util.HashMap;
 public class RelatorioService {
 
     public byte[] gerarRelatorio() throws FileNotFoundException, JRException {
-        String caminhoRelatorio = ResourceUtils.getFile("classpath:static/relatorios/Ficha.jrxml").getAbsolutePath();
+        String caminhoRelatorio = ResourceUtils.getFile("classpath:static/relatorios/ficha.jrxml").getAbsolutePath();
         JasperReport jasperReport = JasperCompileManager.compileReport(caminhoRelatorio);
         JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, new HashMap<>(), new JREmptyDataSource());
         return JasperExportManager.exportReportToPdf(jasperPrint);
