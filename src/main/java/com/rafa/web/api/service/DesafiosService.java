@@ -1,14 +1,12 @@
 package com.rafa.web.api.service;
 
-import com.rafa.web.api.domain.Desafios;
+import com.rafa.web.api.domain.Desafio;
 import com.rafa.web.api.repository.DesafiosRepository;
 import com.rafa.web.api.web.exceptionHandler.NotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 import static com.rafa.web.api.shared.Constantes.Erro.DESAFIO_NAO_ENCONTRADO;
 
@@ -18,19 +16,19 @@ public class DesafiosService {
 
     private final DesafiosRepository desafiosRepository;
 
-    public Desafios salvarDesafio(Desafios desafio) {
+    public Desafio salvarDesafio(Desafio desafio) {
         return desafiosRepository.save(desafio);
     }
 
-    public Desafios atualizarDesafio(Long id, Desafios desafio) {
-        Desafios desafioExistente = buscarPorId(id);
+    public Desafio atualizarDesafio(Long id, Desafio desafio) {
+        Desafio desafioExistente = buscarPorId(id);
         desafioExistente.setPergunta(desafio.getPergunta());
         desafioExistente.setResposta(desafio.getResposta());
         desafioExistente.setScoreInicial(desafio.getScoreInicial());
         return desafiosRepository.save(desafioExistente);
     }
 
-    public Page<Desafios> listarDesafios(Integer pagina, Integer tamanho) {
+    public Page<Desafio> listarDesafios(Integer pagina, Integer tamanho) {
         return desafiosRepository.findAll(PageRequest.of(pagina,tamanho));
     }
 
@@ -38,7 +36,7 @@ public class DesafiosService {
         desafiosRepository.deleteById(id);
     }
 
-    private Desafios buscarPorId(Long id) {
+    private Desafio buscarPorId(Long id) {
         return desafiosRepository.findById(id).orElseThrow( () -> new NotFoundException(DESAFIO_NAO_ENCONTRADO + id) );
     }
 

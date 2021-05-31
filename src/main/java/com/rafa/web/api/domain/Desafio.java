@@ -12,8 +12,8 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder(setterPrefix = "com", buildMethodName = "construir")
-@Table(name = "desafios")
-public class Desafios {
+@Table(name = "desafio")
+public class Desafio {
 
     @Id
     @Column(name = "id")
