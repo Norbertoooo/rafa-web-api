@@ -26,11 +26,16 @@ public class Paciente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
     @NotBlank
     @Column(name = "nome_completo")
     private String nomeCompleto;
+
+    @NotBlank
+    @Column(name = "score_atual")
+    private Double scoreAtual;
 
     @NotNull
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATA_FORMATO_BR)

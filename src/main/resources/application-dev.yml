@@ -1,10 +1,10 @@
 spring:
   datasource:
-    username: rafa
-    password: rafa
+    username: postgres
+    password: RafaDB
     driver-class-name: org.postgresql.Driver
     platform: org.hibernate.dialect.PostgreSQLDialect
-    url: jdbc:postgresql://localhost:5432/rafa
+    url: jdbc:postgresql://34.136.113.111:5432/rafa_db
   jpa:
     hibernate:
       ddl-auto: update
