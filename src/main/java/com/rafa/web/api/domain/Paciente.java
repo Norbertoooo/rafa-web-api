@@ -33,7 +33,6 @@ public class Paciente {
     @Column(name = "nome_completo")
     private String nomeCompleto;
 
-    @NotBlank
     @Column(name = "score_atual")
     private Double scoreAtual;
 
