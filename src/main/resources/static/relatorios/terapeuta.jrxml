@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.16.0-48579d909b7943b64690c65c71e07e0b80981928  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="terapeuta" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8ca75342-385a-4bcd-b2fe-dd4c78ff5e26">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="rafaDB"/>
+	<parameter name="pacienteId" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[select * from terapeuta where id = (select id_terapeuta from paciente where paciente.id = 10)]]>
+	</queryString>
+	<field name="id" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="id"/>
+		<property name="com.jaspersoft.studio.field.label" value="id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="terapeuta"/>
+	</field>
+	<field name="cpf" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="cpf"/>
+		<property name="com.jaspersoft.studio.field.label" value="cpf"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="terapeuta"/>
+	</field>
+	<field name="crfa" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="crfa"/>
+		<property name="com.jaspersoft.studio.field.label" value="crfa"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="terapeuta"/>
+	</field>
+	<field name="data_nascimento" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="data_nascimento"/>
+		<property name="com.jaspersoft.studio.field.label" value="data_nascimento"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="terapeuta"/>
+	</field>
+	<field name="especialidade" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="especialidade"/>
+		<property name="com.jaspersoft.studio.field.label" value="especialidade"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="terapeuta"/>
+	</field>
+	<field name="formacao" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="formacao"/>
+		<property name="com.jaspersoft.studio.field.label" value="formacao"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="terapeuta"/>
+	</field>
+	<field name="nome_completo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nome_completo"/>
+		<property name="com.jaspersoft.studio.field.label" value="nome_completo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="terapeuta"/>
+	</field>
+	<field name="telefone" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="telefone"/>
+		<property name="com.jaspersoft.studio.field.label" value="telefone"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="terapeuta"/>
+	</field>
+	<field name="id_endereco" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="id_endereco"/>
+		<property name="com.jaspersoft.studio.field.label" value="id_endereco"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="terapeuta"/>
+	</field>
+	<field name="email" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="email"/>
+		<property name="com.jaspersoft.studio.field.label" value="email"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="terapeuta"/>
+	</field>
+	<group name="id">
+		<groupExpression><![CDATA[$F{id}]]></groupExpression>
+	</group>
+	<group name="cpf">
+		<groupExpression><![CDATA[$F{cpf}]]></groupExpression>
+	</group>
+	<group name="crfa">
+		<groupExpression><![CDATA[$F{crfa}]]></groupExpression>
+	</group>
+	<group name="data_nascimento">
+		<groupExpression><![CDATA[$F{data_nascimento}]]></groupExpression>
+	</group>
+	<group name="especialidade">
+		<groupExpression><![CDATA[$F{especialidade}]]></groupExpression>
+	</group>
+	<group name="formacao">
+		<groupExpression><![CDATA[$F{formacao}]]></groupExpression>
+	</group>
+	<group name="nome_completo">
+		<groupExpression><![CDATA[$F{nome_completo}]]></groupExpression>
+	</group>
+	<group name="telefone">
+		<groupExpression><![CDATA[$F{telefone}]]></groupExpression>
+	</group>
+	<group name="id_endereco">
+		<groupExpression><![CDATA[$F{id_endereco}]]></groupExpression>
+	</group>
+	<group name="email">
+		<groupExpression><![CDATA[$F{email}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="31">
+			<staticText>
+				<reportElement x="0" y="0" width="180" height="30" uuid="9c12e2bb-59db-4441-885d-7507fb90b514"/>
+				<textElement>
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[Terapeuta]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="90" splitType="Stretch">
+			<textField>
+				<reportElement x="100" y="0" width="180" height="30" uuid="ab18b178-7c1d-4a9b-9fd3-8d0f77c66c26"/>
+				<textFieldExpression><![CDATA[$F{nome_completo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="380" y="30" width="164" height="30" uuid="0a924bd1-24e8-447a-8494-a5ad2bb9c324"/>
+				<textFieldExpression><![CDATA[$F{telefone}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="30" width="180" height="30" uuid="e9cfe843-2367-448e-b2c9-8a0efc51b78b"/>
+				<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="60" width="180" height="30" uuid="b9dd12e3-2eaf-40cf-8d9b-2c5a83972a33"/>
+				<textFieldExpression><![CDATA[$F{especialidade}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="380" y="60" width="165" height="30" uuid="424e3924-dcb2-4c08-8b61-b33299246cde"/>
+				<textFieldExpression><![CDATA[$F{formacao}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="60" width="100" height="30" uuid="0324e0af-1b36-4124-b379-197c8cbdd166"/>
+				<text><![CDATA[Especialidade]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="60" width="100" height="30" uuid="68fe8bc5-e96d-486f-9929-750213c1f642"/>
+				<text><![CDATA[Formação]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="30" uuid="c0ded764-54f0-4aa2-bdea-5b3f37a3d5c6"/>
+				<text><![CDATA[Nome Completo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="30" width="100" height="30" uuid="a3265ee2-73d7-4315-8e9d-d022538b33dc"/>
+				<text><![CDATA[Email:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="30" width="100" height="30" uuid="cf8c9fff-9b4d-440b-baf4-83c43e78462b"/>
+				<text><![CDATA[Telefone:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="0" width="100" height="30" uuid="bd6b3ea0-002e-4471-b5d5-9ee81614cf6f"/>
+				<text><![CDATA[CRFa:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="380" y="0" width="164" height="30" uuid="c29395ad-c443-433e-b9c9-695e00cb72a9"/>
+				<textFieldExpression><![CDATA[$F{crfa}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+</jasperReport>
