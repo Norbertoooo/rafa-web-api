@@ -5,6 +5,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.core.env.Environment;
 
+import java.util.Objects;
+
 @SpringBootApplication
 @Log4j2
 public class RafaWebApiApplication {
@@ -16,14 +18,24 @@ public class RafaWebApiApplication {
 
     private static void logApplicationStartup(Environment env) {
 
-        log.info("\n----------------------------------------------------------\n\t" +
-                "Application '{}' is running! Access URLs:\n\t" +
-                "Local: \t\thttp://localhost:{}\n\t" +
-                "Profile(s): \t{}\n----------------------------------------------------------",
-                env.getProperty("spring.application.name"),
-                env.getProperty("server.port"),
-                env.getActiveProfiles()
-        );
+        if (Objects.equals(env.getProperty("spring.profiles.active"), "prod")) {
+            log.info("\n----------------------------------------------------------\n\t" +
+                            "Application '{}' is running! Access URLs:\n\t" +
+                            "Profile(s): \t{}\n----------------------------------------------------------",
+                    env.getProperty("spring.application.name"),
+                    env.getActiveProfiles()
+            );
+        } else {
+            log.info("\n----------------------------------------------------------\n\t" +
+                            "Application '{}' is running! Access URLs:\n\t" +
+                            "Local: \t\thttp://localhost:{}\n\t" +
+                            "Profile(s): \t{}\n----------------------------------------------------------",
+                    env.getProperty("spring.application.name"),
+                    env.getProperty("server.port"),
+                    env.getActiveProfiles()
+            );
+        }
+
     }
 
 }
