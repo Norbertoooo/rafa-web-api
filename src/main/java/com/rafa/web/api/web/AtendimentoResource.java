@@ -4,10 +4,7 @@ import com.rafa.web.api.domain.Atendimento;
 import com.rafa.web.api.service.AtendimentoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,6 +23,12 @@ public class AtendimentoResource {
     @GetMapping("/terapeuta/{terapeutaId}")
     public ResponseEntity<List<Atendimento>> obterAtendimentosDeUmTerapeuta(@PathVariable Long terapeutaId) {
         return ResponseEntity.ok(atendimentoService.obterAtendimentosPorTeraupeuta(terapeutaId));
+    }
+
+    @PatchMapping("/{atendimentoId}")
+    public ResponseEntity<Atendimento> editarObservacao(@PathVariable Long atendimentoId, @RequestBody Atendimento atendimento) {
+        atendimentoService.editarObservacao(atendimentoId, atendimento);
+        return ResponseEntity.noContent().build();
     }
 
 }

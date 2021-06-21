@@ -19,6 +19,7 @@ public final class Constantes {
         public static final String TERAPEUTA_NAO_ENCONTRADO = "Terapeuta não encontrado!";
         public static final String RESPONSAVEL_NAO_ENCONTRADO = "Responsável não encontrado!";
         public static final String PACIENTE_NAO_ENCONTRADO = "Paciente não encontrado!";
+        public static final String ATENDIMENTO_NAO_ENCONTRADO = "Atendimento não encontrado!";
         public static final String DESAFIO_NAO_ENCONTRADO = "Desafio não encontrado para o id: ";
     }
 
