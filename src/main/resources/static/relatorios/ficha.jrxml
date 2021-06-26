@@ -54,7 +54,7 @@ WHERE
 		<band height="3"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="309">
+		<band height="510">
 			<textField>
 				<reportElement x="80" y="30" width="50" height="30" uuid="281c1f14-becb-4663-b917-f4be355ba175"/>
 				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
@@ -102,6 +102,14 @@ WHERE
 				</textElement>
 				<text><![CDATA[Paciente]]></text>
 			</staticText>
+			<subreport>
+				<reportElement x="-20" y="310" width="595" height="200" uuid="a2ab2351-7de7-4291-a2df-a4929f4ce3be"/>
+				<subreportParameter name="pacienteId">
+					<subreportParameterExpression><![CDATA[$P{pacienteId}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["atendimentos.jasper"]]></subreportExpression>
+			</subreport>
 		</band>
 	</columnHeader>
 	<columnFooter>
@@ -112,7 +120,7 @@ WHERE
 			<textField>
 				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="d5eaf0eb-3069-4e8d-918c-5d5c8c3e9721"/>
 				<textElement textAlignment="Right"/>
-				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Página"+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Report">
 				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="e580f05c-9d5e-4541-8478-b3eb58d88be3"/>

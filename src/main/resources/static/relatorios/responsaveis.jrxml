@@ -5,6 +5,13 @@
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="rafa-postgres"/>
 	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="284"/>
 	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="705"/>
+	<subDataset name="Responsaveis" uuid="edb6187e-ab3c-4904-b72c-f3b87ea61552">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="rafa-postgres"/>
+		<queryString language="SQL">
+			<![CDATA[]]>
+		</queryString>
+	</subDataset>
 	<parameter name="pacienteId" class="java.lang.Integer"/>
 	<queryString language="SQL">
 		<![CDATA[select * from responsavel where id in (select responsavel_id from pacientes_responsaveis where paciente_id = $P{pacienteId} )]]>
@@ -104,7 +111,7 @@
 		</band>
 	</pageHeader>
 	<detail>
-		<band height="33" splitType="Stretch">
+		<band height="30" splitType="Stretch">
 			<textField>
 				<reportElement x="0" y="0" width="130" height="30" uuid="3d3f7d8e-b3a9-4c66-a936-66b30108a680"/>
 				<textFieldExpression><![CDATA[$F{nome_completo}]]></textFieldExpression>
