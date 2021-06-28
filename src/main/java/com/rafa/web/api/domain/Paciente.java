@@ -44,6 +44,9 @@ public class Paciente {
     @Column(name = "id_terapeuta")
     private Long idTerapeuta;
 
+    @Column(name = "quantidade_atendimentos")
+    private Long quantidadeAtendimentos;
+
     @ManyToMany(cascade = ALL, fetch = EAGER)
     @JoinTable(name = "pacientes_responsaveis", joinColumns =
             {@JoinColumn(name = "paciente_id")}, inverseJoinColumns =
