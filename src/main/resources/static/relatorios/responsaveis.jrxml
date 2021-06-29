@@ -93,19 +93,19 @@
 				<text><![CDATA[Responsáveis]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="41" width="130" height="30" uuid="0dde2e36-abf0-4f3d-b1f8-f24aa93b338a"/>
+				<reportElement x="0" y="41" width="210" height="30" uuid="0dde2e36-abf0-4f3d-b1f8-f24aa93b338a"/>
 				<text><![CDATA[Nome Completo:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="130" y="41" width="130" height="30" uuid="afbba6df-0560-4937-9b98-031c6254082d"/>
+				<reportElement x="210" y="40" width="170" height="30" uuid="afbba6df-0560-4937-9b98-031c6254082d"/>
 				<text><![CDATA[Email:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="260" y="41" width="130" height="30" uuid="282e501b-d549-4f91-b709-b7e7bac9e293"/>
+				<reportElement x="380" y="40" width="80" height="30" uuid="282e501b-d549-4f91-b709-b7e7bac9e293"/>
 				<text><![CDATA[Parentesco:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="390" y="41" width="165" height="30" uuid="d0b2b37a-5a38-4304-98da-6ebb8a10bf93"/>
+				<reportElement x="460" y="41" width="95" height="30" uuid="d0b2b37a-5a38-4304-98da-6ebb8a10bf93"/>
 				<text><![CDATA[Telefone:]]></text>
 			</staticText>
 		</band>
@@ -113,19 +113,19 @@
 	<detail>
 		<band height="30" splitType="Stretch">
 			<textField>
-				<reportElement x="0" y="0" width="130" height="30" uuid="3d3f7d8e-b3a9-4c66-a936-66b30108a680"/>
+				<reportElement x="0" y="0" width="210" height="30" uuid="3d3f7d8e-b3a9-4c66-a936-66b30108a680"/>
 				<textFieldExpression><![CDATA[$F{nome_completo}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="130" y="0" width="130" height="30" uuid="af98385a-4aa6-4ae3-a4e4-bcac2eb9b349"/>
+				<reportElement x="210" y="-1" width="170" height="30" uuid="af98385a-4aa6-4ae3-a4e4-bcac2eb9b349"/>
 				<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="260" y="0" width="130" height="30" uuid="0173d95a-987e-4a12-8296-6f56997d8261"/>
+				<reportElement x="380" y="0" width="80" height="30" uuid="0173d95a-987e-4a12-8296-6f56997d8261"/>
 				<textFieldExpression><![CDATA[$F{parentesco}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="390" y="0" width="165" height="30" uuid="d13cba53-080d-4fe3-86f4-1dc4788e39d6"/>
+				<reportElement x="460" y="0" width="95" height="30" uuid="d13cba53-080d-4fe3-86f4-1dc4788e39d6"/>
 				<textFieldExpression><![CDATA[$F{telefone}]]></textFieldExpression>
 			</textField>
 		</band>

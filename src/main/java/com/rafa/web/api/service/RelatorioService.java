@@ -29,15 +29,15 @@ public class RelatorioService {
         InputStream caminhoRelatorioTerapeuta = new ClassPathResource("static/relatorios/terapeuta.jrxml").getInputStream();
         InputStream caminhoRelatorioAtendiemntos = new ClassPathResource("static/relatorios/atendimentos.jrxml").getInputStream();
 
-        JasperReport jasperReport = JasperCompileManager.compileReport(caminhoRelatorio);
-        JasperReport jasperReportResponsavel = JasperCompileManager.compileReport(caminhoRelatorioResponsavel);
         JasperReport jasperReportTerapeuta = JasperCompileManager.compileReport(caminhoRelatorioTerapeuta);
+        JasperReport jasperReportResponsavel = JasperCompileManager.compileReport(caminhoRelatorioResponsavel);
         JasperReport jasperReportAtendimentos = JasperCompileManager.compileReport(caminhoRelatorioAtendiemntos);
 
         JRSaver.saveObject(jasperReportTerapeuta, "terapeuta.jasper");
         JRSaver.saveObject(jasperReportResponsavel, "responsaveis.jasper");
         JRSaver.saveObject(jasperReportAtendimentos, "atendimentos.jasper");
 
+        JasperReport jasperReport = JasperCompileManager.compileReport(caminhoRelatorio);
 
         Map<String, Object> parametros = new HashMap<>();
         parametros.put("pacienteId", pacienteId);

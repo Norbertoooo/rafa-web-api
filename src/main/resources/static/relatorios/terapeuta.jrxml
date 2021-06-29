@@ -2,10 +2,12 @@
 <!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.16.0-48579d909b7943b64690c65c71e07e0b80981928  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="terapeuta" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8ca75342-385a-4bcd-b2fe-dd4c78ff5e26">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="rafaDB"/>
-	<parameter name="pacienteId" class="java.lang.String"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="rafa-prod"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="344"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="645"/>
+	<parameter name="pacienteId" class="java.lang.Integer"/>
 	<queryString language="SQL">
-		<![CDATA[select * from terapeuta where id = (select id_terapeuta from paciente where paciente.id = 10)]]>
+		<![CDATA[select * from terapeuta where id = (select id_terapeuta from paciente where paciente.id =$P{pacienteId})]]>
 	</queryString>
 	<field name="id" class="java.lang.Long">
 		<property name="com.jaspersoft.studio.field.name" value="id"/>
