@@ -27,8 +27,8 @@ public class Desafio {
     private String resposta;
 
     @Column(name = "score_inicial")
-    private Integer scoreInicial;
+    private Float scoreInicial;
 
     @Column(name = "score_global")
-    private Integer scoreGlobal;
+    private Float scoreGlobal;
 }
