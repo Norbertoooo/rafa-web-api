@@ -9,7 +9,7 @@ Rest Api do projeto RAFA
 Para executar o projeto, será necessário instalar os seguintes jdks/softwares:
 
 - [JDK 11: Necessário para executar o projeto](https://adoptopenjdk.net/)
-- [Maven: Necessário para realizar o build do projeto](http://mirror.nbtelecom.com.br/apache/maven/maven-3/3.5.3/binaries/apache-maven-3.5.3-bin.zip)
+- [Maven: Necessário para realizar o build do projeto](https://mirror.nbtelecom.com.br/apache/maven/maven-3/3.8.1/binaries/)
 - [IntelliJ IDEA: Para desenvolvimento do projeto](https://www.jetbrains.com/pt-br/idea/download/#section=windows)
 - [Git: Para versionamento do projeto](https://git-scm.com/downloads)
 
