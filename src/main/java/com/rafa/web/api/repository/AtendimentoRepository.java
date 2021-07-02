@@ -11,6 +11,6 @@ public interface AtendimentoRepository extends JpaRepository<Atendimento, Long> 
 
     List<Atendimento> findAllByPaciente_Id(Long pacienteId);
 
-    List<Atendimento> findAllByTerapeuta_Id(Long terapeutaId);
+    List<Atendimento> findAllByTerapeuta_Login_Email(String email);
 
 }
