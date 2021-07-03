@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.16.0-48579d909b7943b64690c65c71e07e0b80981928  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relatorio_de_acompanhamento" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="aafc1992-d3ae-4665-8620-a1f75c445e23">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="rafa-prod"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="id_paciente" class="java.lang.Integer">
+		<parameterDescription><![CDATA[id do paciente]]></parameterDescription>
+	</parameter>
+	<queryString>
+		<![CDATA[select * from paciente where id  =  $P{id_paciente} ]]>
+	</queryString>
+	<field name="id" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="id"/>
+		<property name="com.jaspersoft.studio.field.label" value="id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="paciente"/>
+	</field>
+	<field name="data_nascimento" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="data_nascimento"/>
+		<property name="com.jaspersoft.studio.field.label" value="data_nascimento"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="paciente"/>
+	</field>
+	<field name="id_terapeuta" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="id_terapeuta"/>
+		<property name="com.jaspersoft.studio.field.label" value="id_terapeuta"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="paciente"/>
+	</field>
+	<field name="nome_completo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nome_completo"/>
+		<property name="com.jaspersoft.studio.field.label" value="nome_completo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="paciente"/>
+	</field>
+	<field name="score_atual" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="score_atual"/>
+		<property name="com.jaspersoft.studio.field.label" value="score_atual"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="paciente"/>
+	</field>
+	<field name="quantidade_atendimentos" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="quantidade_atendimentos"/>
+		<property name="com.jaspersoft.studio.field.label" value="quantidade_atendimentos"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="paciente"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="81" splitType="Stretch">
+			<rectangle>
+				<reportElement x="-20" y="-20" width="595" height="100" forecolor="rgba(218, 233, 245, 0.0)" backcolor="#3766D4" uuid="f33e32db-589a-425a-bfc9-8f480caaa63e"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="-19" y="20" width="370" height="30" forecolor="#FFFFFF" uuid="e5743dfd-9aed-4f0d-ae2c-8045c579d5a0"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Black" size="20"/>
+				</textElement>
+				<text><![CDATA[Relatório de Acompanhamento]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="510" y="60" width="65" height="20" forecolor="#FFFFFF" uuid="ca41fa5c-d8ce-4586-9c88-800485170921"/>
+				<textElement>
+					<font fontName="Arial Black" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[
+new SimpleDateFormat("dd/MM/yyyy").format(new java.util.Date())]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="100" splitType="Stretch">
+			<textField>
+				<reportElement x="141" y="70" width="50" height="30" uuid="6e568391-df1e-467d-a881-efce895f25e2"/>
+				<textFieldExpression><![CDATA[$F{quantidade_atendimentos}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="31" y="40" width="40" height="30" uuid="dfc371f6-7e99-4498-b416-256e35817894"/>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="261" y="70" width="100" height="30" uuid="216d9617-5055-4501-aa78-dd79535d727c"/>
+				<textFieldExpression><![CDATA[$F{score_atual}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="10" width="100" height="30" uuid="7c24375a-edcf-453f-9f9f-cd46278bac52"/>
+				<textElement>
+					<font size="18"/>
+				</textElement>
+				<text><![CDATA[Paciente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="70" width="140" height="30" uuid="f68d7e74-9887-4042-a293-99752934d0f3"/>
+				<text><![CDATA[Quantidade de atendimentos:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="151" y="40" width="203" height="30" uuid="f07d89ea-5b5e-4e4b-afaa-bb254eae0cdc"/>
+				<textFieldExpression><![CDATA[$F{nome_completo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="40" width="30" height="30" uuid="bea51342-63fc-495d-a23f-d60e2b75acad"/>
+				<text><![CDATA[Id:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="354" y="40" width="100" height="30" uuid="29eba522-ed1f-411b-8f31-4d9b20a33dbf"/>
+				<text><![CDATA[Data de Nascimento:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="191" y="70" width="70" height="30" uuid="0d91dd8d-4105-424a-a289-b1053034444c"/>
+				<text><![CDATA[Score Atual:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="71" y="40" width="80" height="30" uuid="2c42a18e-86bd-4d76-96a2-081d631748ea"/>
+				<text><![CDATA[Nome Completo:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="454" y="40" width="100" height="30" uuid="5310eda8-1c01-43bc-87f5-fa7688ee5077"/>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("dd/MM/yyyy").format($F{data_nascimento})]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="50">
+			<subreport overflowType="Stretch">
+				<reportElement x="1" y="0" width="552" height="50" isRemoveLineWhenBlank="true" uuid="3cd7030d-7d9c-418b-b389-f43f9a6a3371"/>
+				<subreportParameter name="id_terapeuta">
+					<subreportParameterExpression><![CDATA[$F{id_terapeuta}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["terapeuta.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="50">
+			<subreport>
+				<reportElement x="1" y="0" width="552" height="50" isRemoveLineWhenBlank="true" uuid="61ddef72-6350-4b9d-bc73-1491116971c8"/>
+				<subreportParameter name="pacienteId">
+					<subreportParameterExpression><![CDATA[$F{id}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["responsaveis.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="53">
+			<subreport>
+				<reportElement x="1" y="0" width="552" height="53" isRemoveLineWhenBlank="true" uuid="9dbdd149-3d50-4eb8-9e63-7d449298402a"/>
+				<subreportParameter name="id_paciente">
+					<subreportParameterExpression><![CDATA[$F{id}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["atendimentos.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="180" y="20" width="100" height="30" uuid="672e59a2-e888-4667-b8dc-9470ce2f4342"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="280" y="20" width="100" height="30" uuid="db6fb8d1-00c0-420d-8d37-a8f08ae8f900"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[" de " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

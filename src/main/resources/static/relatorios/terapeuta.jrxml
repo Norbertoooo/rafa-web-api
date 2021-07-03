@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.16.0-48579d909b7943b64690c65c71e07e0b80981928  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="terapeuta" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8ca75342-385a-4bcd-b2fe-dd4c78ff5e26">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="terapeuta" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a90abf47-6a92-430c-a8c7-8eb5ce042508">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="rafa-prod"/>
-	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="344"/>
-	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="645"/>
-	<parameter name="pacienteId" class="java.lang.Integer"/>
+	<parameter name="id_terapeuta" class="java.lang.Long"/>
 	<queryString language="SQL">
-		<![CDATA[select * from terapeuta where id = (select id_terapeuta from paciente where paciente.id =$P{pacienteId})]]>
+		<![CDATA[select * from terapeuta where id =  $P{id_terapeuta} ]]>
 	</queryString>
 	<field name="id" class="java.lang.Long">
 		<property name="com.jaspersoft.studio.field.name" value="id"/>
@@ -59,100 +57,58 @@
 		<property name="com.jaspersoft.studio.field.label" value="email"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="terapeuta"/>
 	</field>
-	<group name="id">
-		<groupExpression><![CDATA[$F{id}]]></groupExpression>
-	</group>
-	<group name="cpf">
-		<groupExpression><![CDATA[$F{cpf}]]></groupExpression>
-	</group>
-	<group name="crfa">
-		<groupExpression><![CDATA[$F{crfa}]]></groupExpression>
-	</group>
-	<group name="data_nascimento">
-		<groupExpression><![CDATA[$F{data_nascimento}]]></groupExpression>
-	</group>
-	<group name="especialidade">
-		<groupExpression><![CDATA[$F{especialidade}]]></groupExpression>
-	</group>
-	<group name="formacao">
-		<groupExpression><![CDATA[$F{formacao}]]></groupExpression>
-	</group>
-	<group name="nome_completo">
-		<groupExpression><![CDATA[$F{nome_completo}]]></groupExpression>
-	</group>
-	<group name="telefone">
-		<groupExpression><![CDATA[$F{telefone}]]></groupExpression>
-	</group>
-	<group name="id_endereco">
-		<groupExpression><![CDATA[$F{id_endereco}]]></groupExpression>
-	</group>
-	<group name="email">
-		<groupExpression><![CDATA[$F{email}]]></groupExpression>
-	</group>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
-	<pageHeader>
-		<band height="31">
+	<detail>
+		<band height="90">
 			<staticText>
-				<reportElement x="0" y="0" width="180" height="30" uuid="9c12e2bb-59db-4441-885d-7507fb90b514"/>
+				<reportElement x="-20" y="0" width="100" height="30" uuid="48eb1148-3b07-4474-a4b4-b58e4da2282c"/>
 				<textElement>
-					<font size="20"/>
+					<font size="18"/>
 				</textElement>
 				<text><![CDATA[Terapeuta]]></text>
 			</staticText>
-		</band>
-	</pageHeader>
-	<columnHeader>
-		<band height="90" splitType="Stretch">
 			<textField>
-				<reportElement x="100" y="0" width="180" height="30" uuid="ab18b178-7c1d-4a9b-9fd3-8d0f77c66c26"/>
+				<reportElement x="60" y="60" width="500" height="30" uuid="63f53472-54bf-4573-a572-f37083babb14"/>
 				<textFieldExpression><![CDATA[$F{nome_completo}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="380" y="30" width="164" height="30" uuid="0a924bd1-24e8-447a-8494-a5ad2bb9c324"/>
+				<reportElement x="350" y="30" width="110" height="30" uuid="32405b42-667f-4c46-b73a-e0ab4b559b33"/>
 				<textFieldExpression><![CDATA[$F{telefone}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="100" y="30" width="180" height="30" uuid="e9cfe843-2367-448e-b2c9-8a0efc51b78b"/>
+				<reportElement x="500" y="30" width="60" height="30" uuid="67cd1e03-1afb-4126-8d8f-0ba5a1c46702"/>
+				<textFieldExpression><![CDATA[$F{crfa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="30" width="40" height="30" uuid="8ad35255-77fa-4a89-ba89-9d7e927a7fec"/>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="70" y="30" width="230" height="30" uuid="b36bec1b-8959-42c5-a776-f23f2a63faeb"/>
 				<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="100" y="60" width="180" height="30" uuid="b9dd12e3-2eaf-40cf-8d9b-2c5a83972a33"/>
-				<textFieldExpression><![CDATA[$F{especialidade}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="380" y="60" width="165" height="30" uuid="424e3924-dcb2-4c08-8b61-b33299246cde"/>
-				<textFieldExpression><![CDATA[$F{formacao}]]></textFieldExpression>
-			</textField>
 			<staticText>
-				<reportElement x="0" y="60" width="100" height="30" uuid="0324e0af-1b36-4124-b379-197c8cbdd166"/>
-				<text><![CDATA[Especialidade]]></text>
+				<reportElement x="-20" y="30" width="20" height="30" uuid="e26d802f-e4c5-43be-9d91-c1077b7ed90a"/>
+				<text><![CDATA[Id:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="280" y="60" width="100" height="30" uuid="68fe8bc5-e96d-486f-9929-750213c1f642"/>
-				<text><![CDATA[Formação]]></text>
+				<reportElement x="-20" y="60" width="80" height="30" uuid="d2b99162-f86d-4c28-8b04-6e2d1b3c7a1d"/>
+				<text><![CDATA[Nome Completo:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="0" width="100" height="30" uuid="c0ded764-54f0-4aa2-bdea-5b3f37a3d5c6"/>
-				<text><![CDATA[Nome Completo]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="0" y="30" width="100" height="30" uuid="a3265ee2-73d7-4315-8e9d-d022538b33dc"/>
+				<reportElement x="40" y="30" width="30" height="30" uuid="98ee0289-79e0-4074-8b04-bfc7cccac5f4"/>
 				<text><![CDATA[Email:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="280" y="30" width="100" height="30" uuid="cf8c9fff-9b4d-440b-baf4-83c43e78462b"/>
+				<reportElement x="300" y="30" width="50" height="30" uuid="141efd75-bfa4-4591-8801-5b26b2955549"/>
 				<text><![CDATA[Telefone:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="280" y="0" width="100" height="30" uuid="bd6b3ea0-002e-4471-b5d5-9ee81614cf6f"/>
-				<text><![CDATA[CRFa:]]></text>
+				<reportElement x="460" y="30" width="40" height="30" uuid="2d25c0c4-ddab-42b6-bb3d-6e8aaaa1e942"/>
+				<text><![CDATA[CRF-a:]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="380" y="0" width="164" height="30" uuid="c29395ad-c443-433e-b9c9-695e00cb72a9"/>
-				<textFieldExpression><![CDATA[$F{crfa}]]></textFieldExpression>
-			</textField>
 		</band>
-	</columnHeader>
+	</detail>
 </jasperReport>

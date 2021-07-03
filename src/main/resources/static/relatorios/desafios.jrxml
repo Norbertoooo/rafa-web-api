@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.16.0-48579d909b7943b64690c65c71e07e0b80981928  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="desafios" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b974fb4d-c41f-4414-8b94-6b47decf6545">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="rafa-prod"/>
+	<parameter name="id_atendimento" class="java.lang.Long"/>
+	<queryString language="SQL">
+		<![CDATA[select id, pergunta, resposta, score_global, score_inicial
+from desafio
+where id in (select id_desafio
+             from desafios_atendimento
+             where id_atendimento =  $P{id_atendimento} )]]>
+	</queryString>
+	<field name="id" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="id"/>
+		<property name="com.jaspersoft.studio.field.label" value="id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="desafio"/>
+	</field>
+	<field name="pergunta" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="pergunta"/>
+		<property name="com.jaspersoft.studio.field.label" value="pergunta"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="desafio"/>
+	</field>
+	<field name="resposta" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="resposta"/>
+		<property name="com.jaspersoft.studio.field.label" value="resposta"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="desafio"/>
+	</field>
+	<field name="score_global" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="score_global"/>
+		<property name="com.jaspersoft.studio.field.label" value="score_global"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="desafio"/>
+	</field>
+	<field name="score_inicial" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="score_inicial"/>
+		<property name="com.jaspersoft.studio.field.label" value="score_inicial"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="desafio"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="60" splitType="Stretch">
+			<staticText>
+				<reportElement x="-20" y="30" width="111" height="30" uuid="35c6fc13-3c25-4e28-91ae-d36fef28d2b2">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="688be0bc-a215-42c3-8b2e-3908069e6c80"/>
+				</reportElement>
+				<text><![CDATA[id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="91" y="30" width="111" height="30" uuid="62fdd364-7d63-41a4-b99d-c60fbaab56cb">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a1464346-c9d2-4013-903b-5e417f018381"/>
+				</reportElement>
+				<text><![CDATA[pergunta]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="202" y="30" width="111" height="30" uuid="74de5abc-4ca0-4681-a189-50af0e78d7e9">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4f4b3a6e-16ee-49c2-ab07-5391ac373c88"/>
+				</reportElement>
+				<text><![CDATA[resposta]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="313" y="30" width="111" height="30" uuid="d7d056b5-2010-4faa-9c81-f99df42da127">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="30cf0f8e-63ad-46cd-9152-99b3dc5e1273"/>
+				</reportElement>
+				<text><![CDATA[score global]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="424" y="30" width="111" height="30" uuid="548c06ea-8b51-474f-8686-cb860b1c6819">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="dd4f3576-1427-4682-ad12-c64e01863cc0"/>
+				</reportElement>
+				<text><![CDATA[score inicial]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-20" y="10" width="222" height="20" uuid="aa9d73e3-4a08-4132-a544-a75823e20723"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Desafios realizados]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement x="-20" y="0" width="111" height="30" uuid="cab0450e-b2ea-4ef3-b46b-ffc2df85277d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="688be0bc-a215-42c3-8b2e-3908069e6c80"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="91" y="0" width="111" height="30" uuid="ed857bc0-de5a-43cd-aebe-00d62c23c63b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a1464346-c9d2-4013-903b-5e417f018381"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{pergunta}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="202" y="0" width="111" height="30" uuid="6c1d7acd-b2ac-459b-9e2d-bafeb0442e6f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4f4b3a6e-16ee-49c2-ab07-5391ac373c88"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{resposta}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="313" y="0" width="111" height="30" uuid="f5666fae-4489-42d3-95c4-0ed49d3570d8">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="30cf0f8e-63ad-46cd-9152-99b3dc5e1273"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{score_global}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="424" y="0" width="111" height="30" uuid="118de8d6-479d-4a99-b6e6-f9cc5a2424c9">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="dd4f3576-1427-4682-ad12-c64e01863cc0"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{score_inicial}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

@@ -24,23 +24,26 @@ public class RelatorioService {
     public byte[] gerarRelatorio(Integer pacienteId) throws IOException, JRException, SQLException {
         // String caminhoRelatorio = ResourceUtils.getFile("classpath:static/relatorios/ficha.jrxml").getAbsolutePath();
 
-        InputStream caminhoRelatorio = new ClassPathResource("static/relatorios/ficha.jrxml").getInputStream();
+        InputStream caminhoRelatorio = new ClassPathResource("static/relatorios/relatorio_de_acompanhamento.jrxml").getInputStream();
         InputStream caminhoRelatorioResponsavel = new ClassPathResource("static/relatorios/responsaveis.jrxml").getInputStream();
         InputStream caminhoRelatorioTerapeuta = new ClassPathResource("static/relatorios/terapeuta.jrxml").getInputStream();
-        InputStream caminhoRelatorioAtendiemntos = new ClassPathResource("static/relatorios/atendimentos.jrxml").getInputStream();
+        InputStream caminhoRelatorioAtendimentos = new ClassPathResource("static/relatorios/atendimentos.jrxml").getInputStream();
+        InputStream caminhoRelatorioDesafios = new ClassPathResource("static/relatorios/desafios.jrxml").getInputStream();
 
         JasperReport jasperReportTerapeuta = JasperCompileManager.compileReport(caminhoRelatorioTerapeuta);
         JasperReport jasperReportResponsavel = JasperCompileManager.compileReport(caminhoRelatorioResponsavel);
-        JasperReport jasperReportAtendimentos = JasperCompileManager.compileReport(caminhoRelatorioAtendiemntos);
+        JasperReport jasperReportAtendimentos = JasperCompileManager.compileReport(caminhoRelatorioAtendimentos);
+        JasperReport jasperReportDesafios= JasperCompileManager.compileReport(caminhoRelatorioDesafios);
 
         JRSaver.saveObject(jasperReportTerapeuta, "terapeuta.jasper");
         JRSaver.saveObject(jasperReportResponsavel, "responsaveis.jasper");
         JRSaver.saveObject(jasperReportAtendimentos, "atendimentos.jasper");
+        JRSaver.saveObject(jasperReportDesafios, "desafios.jasper");
 
         JasperReport jasperReport = JasperCompileManager.compileReport(caminhoRelatorio);
 
         Map<String, Object> parametros = new HashMap<>();
-        parametros.put("pacienteId", pacienteId);
+        parametros.put("id_paciente", pacienteId);
 
         JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parametros, dataSource.getConnection());
 
