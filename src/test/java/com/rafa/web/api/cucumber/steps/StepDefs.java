@@ -10,7 +10,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 
 @Component
-public class StepDefs {
+public abstract class StepDefs {
 
     @Autowired
     protected MockMvc mockMvc;
